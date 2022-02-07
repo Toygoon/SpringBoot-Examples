@@ -3,16 +3,25 @@ package com.community.community;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Map;
 
-import static net.bytebuddy.matcher.ElementMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
+/* Code provided from the book is not working, here's a quick fix and reasons
+* @ComponentScan : The component couldn't be recognized properly, so define this and scan it manually
+* @EnableConfigurationProperties : This is needed to enable configurations from recognized components
+*
+* */
+@ComponentScan
+@EnableConfigurationProperties(FruitProperty.class)
 @SpringBootTest
 public class PropertyTest {
     // Instance; Get list from FruitProperty
