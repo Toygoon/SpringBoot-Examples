@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.is;
 
 // To operate @SpringBootTest properly, @RunWith annotation must be annotated
 @RunWith(SpringRunner.class)
-@SpringBootTest(value = "value=test", properties = {"property.value=propertyTest"},
+@SpringBootTest(value = "value=test",
         // classes : Specify the class
         // webEnvironment : Run Mock servlet
         classes = {SpringBootTestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -24,13 +24,15 @@ class SpringBootTestApplicationTests {
 
     // properties : Add the property before the tests
     // The structure of property is {key=value} like tuples
+    /*
     @Value("${property.value}")
     private String propertyValue;
+     */
 
     @Test
     void contextLoads() {
         assertThat(value, is("test"));
-        assertThat(propertyValue, is("propertyTest"));
+        //assertThat(propertyValue, is("propertyTest"));
     }
 
 }
