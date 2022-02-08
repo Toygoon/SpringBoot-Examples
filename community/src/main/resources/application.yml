@@ -30,3 +30,8 @@ fruit:
       color: red
     - name: water melon
       color: green
+
+spring:
+  h2:
+    console:
+      path: /h2-test
