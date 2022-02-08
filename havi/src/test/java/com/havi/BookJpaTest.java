@@ -6,6 +6,7 @@ import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,10 +17,12 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.springframework.boot.jdbc.EmbeddedDatabaseConnection.H2;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration
 @DataJpaTest
+@AutoConfigureTestDatabase(connection = H2)
 public class BookJpaTest {
     private final static String BOOT_TEST_TITLE = "Spring Boot Test Book";
 
