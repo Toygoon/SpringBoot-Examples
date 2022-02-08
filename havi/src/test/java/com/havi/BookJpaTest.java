@@ -67,7 +67,7 @@ public class BookJpaTest {
         List<Book> bookList = bookRepository.findAll();
         /* Check correct books are existed */
         assertThat(bookList, hasSize(3));
-        assertThat(bookList, contains(book[1], book[2], book[3]));
+        assertThat(bookList, contains(book[0], book[1], book[2]));
     }
 
     @Test

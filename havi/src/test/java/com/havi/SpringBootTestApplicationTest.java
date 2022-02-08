@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.is;
         // classes : Specify the class
         // webEnvironment : Run Mock servlet
         classes = {SpringBootTestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class SpringBootTestApplicationTests {
+class SpringBootTestApplicationTest {
 
     // value : Set the property to apply before the tests
     // This overrides the default property
