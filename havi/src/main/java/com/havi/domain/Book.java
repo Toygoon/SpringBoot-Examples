@@ -4,13 +4,23 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Getter
+@Entity
+@Table
 public class Book {
+    // Specify PK
+    @Id
+    @GeneratedValue
     private Integer idx;
+
+    // Specify data records
+    @Column
     private String title;
+    @Column
     private LocalDateTime publishedAt;
 
     @Builder
