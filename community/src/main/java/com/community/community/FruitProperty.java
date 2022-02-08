@@ -15,5 +15,5 @@ import java.util.Map;
 // Bind to the list as "fruit"
 @ConfigurationProperties("fruit")
 public class FruitProperty {
-    private List<Map> list;
+    private List<Fruit> list;
 }
