@@ -1,5 +1,6 @@
 package com.web.domain;
 
+import com.web.domain.enums.BoardType;
 import lombok.*;
 
 import javax.persistence.*;
