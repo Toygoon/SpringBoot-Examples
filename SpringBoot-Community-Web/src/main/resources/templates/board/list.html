@@ -4,8 +4,11 @@
     <meta http-equiv="Content-Type" context="text/html; charset=UTF-8"/>
     <title>Board</title>
     <link rel="stylesheet" th:href="@{/css/base.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div th:replace="layout/header::header"></div>
@@ -31,13 +34,13 @@
             </tr>
             </thead>
             <tbody>
+            <tbody>
             <tr th:each="board : ${boardList}">
                 <td th:text="${board.idx}"></td>
                 <td th:text="${board.boardType.value}"></td>
-                <td th:text="${temporals.format(board.createdDate,
-                        'yyyy-MM-dd HH:mm')}"></td>
-                <td th:text="${temporals.format(board.updatedDate,
-                        'yyyy-MM-dd HH:mm')}"></td>
+                <td><a th:href="'/board?idx='+${board.idx}" th:text="${board.title}"></a></td>
+                <td th:text="${board.createdDate} ? ${#temporals.format(board.createdDate,'yyyy-MM-dd HH:mm')} : ${board.createdDate}"></td>
+                <td th:text="${board.updatedDate} ? ${#temporals.format(board.updatedDate,'yyyy-MM-dd HH:mm')} : ${board.updatedDate}"></td>
             </tr>
             </tbody>
         </table>
@@ -65,6 +68,7 @@
             </li>
         </ul>
     </nav>
+    <!-- /Pagination -->
 </div>
 
 <div th:replace="layout/footer::footer"></div>
