@@ -11,7 +11,7 @@ import java.util.Map;
 public class UserTokenService extends UserInfoTokenServices {
     public UserTokenService(ClientResources resources, SocialType socialType) {
         // Call super method to inject each Social Media information
-        super(resources.getResource().getUserInfoUri(), resources.getClient().getClientId());
+        super(resources.getClient().getUserAuthorizationUri(), resources.getClient().getClientId());
         // Extract Authority from SocialType
         setAuthoritiesExtractor(new OAuth2AuthoritiesExtractor(socialType));
     }
