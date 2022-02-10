@@ -1,8 +1,9 @@
 package com.web.config;
 
 import com.web.domain.enums.SocialType;
-import com.web.oauth.UserTokenService;
 import com.web.oauth.ClientResources;
+import com.web.oauth.UserTokenService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
@@ -30,6 +32,9 @@ import static com.web.domain.enums.SocialType.*;
 @EnableOAuth2Client
 // extends WebSecurityConfigurerAdapter, Override configure(HttpSecurity) to customize settings
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private OAuth2ClientContext oAuth2ClientContext;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
