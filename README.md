@@ -9,8 +9,7 @@
 >* [\[MISC\] Add images](https://github.com/Toygoon/SpringBoot-Examples/commit/e4301432e77cb4a535658d2b740cca34fc51e0c8)
 >* [\[FIX\] Ex5-3, Dependency of gradle was incorrect](https://github.com/Toygoon/SpringBoot-Examples/commit/2636d5d8b309d142205022cc5e89285c5a361371)
 >* [\[FIX\] Ex5-5, Use OAuth2ResourceServerProperties instead of deprecated ResourceServerProperties](https://github.com/Toygoon/SpringBoot-Examples/commit/ea0e096b267fdfeb2dc69c9f85e0931b232fcd0e)
->* [\[FIX\] Ex5-9, deprecated getUserInfoUri, import UserInfoTokenServices …
-…from older library](https://github.com/Toygoon/SpringBoot-Examples/commit/8913326f5c2589c6a396e585d6b59192e09eecde)
+>* [\[FIX\] Ex5-9, deprecated getUserInfoUri, import UserInfoTokenServices from older library](https://github.com/Toygoon/SpringBoot-Examples/commit/8913326f5c2589c6a396e585d6b59192e09eecde)
 >* [\[FIX\] Ex5-11, Use '-' instead of deprecated '|'](https://github.com/Toygoon/SpringBoot-Examples/commit/c79338a0bfdde77b2684acaa63d2926be05a0dc5)
 >* [\[FIX\] Ex5-18, SocialType variables are needed to be qualified](https://github.com/Toygoon/SpringBoot-Examples/commit/745373122a85094c79da1d0c2f5cc165fad9c9a4)
 >* [\[FIX\] Ex5-32, deprecated getUserInfoUri, import UserInfoTokenServices from older library](https://github.com/Toygoon/SpringBoot-Examples/commit/f41de3e326ca984d428c90c3198f12a91453d85b)
