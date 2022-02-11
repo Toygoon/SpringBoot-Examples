@@ -19,6 +19,12 @@ public class LoginController {
         return "login";
     }
 
+    /*
+    There are some problems with this loginComplete()
+    First, there are some unnecessary logics
+    Second, this can be used for only facebook authentication
+    So, We'll make an annotation and use the AOP
+
     // Set redirecting URL after authentication succeeds
     @GetMapping(value = "/{facebook|google|kakao|}/complete")
     public String loginComplete(HttpSession session) {
@@ -35,6 +41,13 @@ public class LoginController {
                 .createdDate(LocalDateTime.now())
                 .build());
 
+        return "redirect:/board/list";
+    }
+     */
+
+    @GetMapping(value = "/{facebook|google|kakao|}/complete")
+    // @SocialUser : An annotation to be created, it uses HandlerMethodArgumentResolver
+    public String loginComplete(@SocialUser User user) {
         return "redirect:/board/list";
     }
 }
