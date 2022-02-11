@@ -1,6 +1,6 @@
 package com.web.config;
 
-import oauth2.CustomOAuth2Provider;
+import com.web.oauth.CustomOAuth2Provider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
