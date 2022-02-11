@@ -9,3 +9,7 @@ spring:
           facebook:
             client-id:
             client-secret:
+custom:
+  oauth2:
+    kakao:
+      client-id:
