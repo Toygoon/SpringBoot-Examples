@@ -1,40 +1,32 @@
 package com.web.config;
 
-import com.web.domain.enums.SocialType;
-import com.web.oauth.ClientResources;
-import com.web.oauth.UserTokenService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import oauth2.CustomOAuth2Provider;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.oauth2.client.OAuth2ClientContext;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
-import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.CompositeFilter;
-import javax.servlet.Filter;
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static com.web.domain.enums.SocialType.*;
 
 @Configuration
 // @EnableWebSecurity : To use security features from the web
 @EnableWebSecurity
-@EnableOAuth2Client
 // extends WebSecurityConfigurerAdapter, Override configure(HttpSecurity) to customize settings
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private OAuth2ClientContext oAuth2ClientContext;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
@@ -42,7 +34,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // antMatchers : List type requests
         // permitAll : Permission to anyone
         // authenticated : To only authenticated users
-        http.authorizeHttpRequests().antMatchers("/", "/login/**", "/css/**", "/images/**", "/js/**", "/console/**").permitAll().anyRequest().authenticated()
+        http.authorizeHttpRequests().antMatchers("/", "/login/**", "/css/**", "/images/**", "/js/**", "/console/**").permitAll()
+                // Specify URLs each Social Media login format
+                .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType())
+                .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
+                .antMatchers("/kakao").hasAuthority(KAKAO.getRoleType())
+                .anyRequest().authenticated()
+                // oauth2Login : Use OAuth2 login way
+                .and().oauth2Login().defaultSuccessUrl("/loginSuccess").failureUrl("/loginFailure")
                 // headers : Matched header
                 .and().headers().frameOptions().disable()
                 .and().exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
@@ -51,56 +50,44 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().addFilterBefore(filter, CsrfFilter.class).csrf().disable();
     }
 
+    /* Load KAKAO client id; it can be used for @Autowired */
     @Bean
-    public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(filter);
-        registration.setOrder(-100);
+    public ClientRegistrationRepository clientRegistrationRepository(OAuth2ClientProperties oAuth2ClientProperties, @Value("${custom.oauth2.kakao.client-id}") String kakaoClientId) {
+        // getRegistration() : To build Google or Facebook information
+        List<ClientRegistration> registrations = oAuth2ClientProperties.getRegistration().keySet().stream()
+                .map(client -> getRegistration(oAuth2ClientProperties, client))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
 
-        return registration;
+        registrations.add(CustomOAuth2Provider.KAKAO.getBuilder("kakao")
+                .clientId(kakaoClientId)
+                /* Dummy values, but cannot be accepted with null */
+                .clientSecret("test") // dummy
+                .jwkSetUri("test") // dummy
+                .build());
+
+        return new InMemoryClientRegistrationRepository(registrations);
     }
 
-    private Filter oauth2Filter() {
-        CompositeFilter filter = new CompositeFilter();
-        List<Filter> filters = new ArrayList<>();
-        filters.add(oauth2Filter(facebook(), "/login/facebook", FACEBOOK));
-        filters.add(oauth2Filter(google(), "/login/google", GOOGLE));
-        filters.add(oauth2Filter(kakao(), "/login/kakao", KAKAO));
-        filter.setFilters(filters);
-        return filter;
-    }
-
-    private Filter oauth2Filter(ClientResources client, String path, SocialType socialType) {
-        OAuth2ClientAuthenticationProcessingFilter filter = new OAuth2ClientAuthenticationProcessingFilter(path);
-        // Create OAuth2RestTemplate to communicate with authentication server (Oauth2ClientContext needed)
-        OAuth2RestTemplate template = new OAuth2RestTemplate(client.getClient(), oAuth2ClientContext);
-
-        filter.setRestTemplate(template);
-        // Optimize User permission
-        filter.setTokenServices(new UserTokenService(client, socialType));
-        // Set automatically redirected URL when authentication succeeds
-        filter.setAuthenticationSuccessHandler((request, response, authentication) -> response.sendRedirect("/" + socialType.getValue() + "/complete"));
-        // Set authentication failed URL
-        filter.setAuthenticationFailureHandler((request, response, exception) -> response.sendRedirect("/error"));
-        return filter;
-    }
-
-
-    @Bean
-    @ConfigurationProperties("facebook")
-    public ClientResources facebook() {
-        return new ClientResources();
-    }
-
-    @Bean
-    @ConfigurationProperties("google")
-    public ClientResources google() {
-        return new ClientResources();
-    }
-
-    @Bean
-    @ConfigurationProperties("kakao")
-    public ClientResources kakao() {
-        return new ClientResources();
+    private ClientRegistration getRegistration(OAuth2ClientProperties clientProperties, String client) {
+        if ("google".equals(client)) {
+            OAuth2ClientProperties.Registration registration = clientProperties.getRegistration().get("google");
+            return CommonOAuth2Provider.GOOGLE.getBuilder(client)
+                    .clientId(registration.getClientId())
+                    .clientSecret(registration.getClientSecret())
+                    .scope("email", "profile")
+                    .build();
+        }
+        if ("facebook".equals(client)) {
+            OAuth2ClientProperties.Registration registration = clientProperties.getRegistration().get("facebook");
+            return CommonOAuth2Provider.FACEBOOK.getBuilder(client)
+                    .clientId(registration.getClientId())
+                    .clientSecret(registration.getClientSecret())
+                    // Facebook's API settings
+                    .userInfoUri("https://graph.facebook.com/me?fields=id,name,email,link")
+                    .scope("email")
+                    .build();
+        }
+        return null;
     }
 }
