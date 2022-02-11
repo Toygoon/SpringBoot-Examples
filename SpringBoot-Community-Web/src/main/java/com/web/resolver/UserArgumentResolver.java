@@ -1,5 +1,7 @@
 package com.web.resolver;
 
+import com.web.annotation.SocialUser;
+import com.web.domain.User;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -11,7 +13,9 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return false;
+        // Return type condition : The parameter has @SocialUser annotations, and its type is User
+        return parameter.getParameterAnnotation(SocialUser.class) != null
+                && parameter.getParameterType().equals(User.class);
     }
 
     @Override
