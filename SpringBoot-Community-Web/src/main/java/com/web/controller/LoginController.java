@@ -38,7 +38,7 @@ public class LoginController {
     }
      */
 
-    @GetMapping(value = "/{facebook|google|kakao|}/complete")
+    @GetMapping(value = "/{facebook-google-kakao}/complete")
     // @SocialUser : An annotation to be created, it uses HandlerMethodArgumentResolver
     public String loginComplete(@SocialUser User user) {
         return "redirect:/board/list";
