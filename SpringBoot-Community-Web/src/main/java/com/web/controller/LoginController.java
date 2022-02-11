@@ -1,0 +1,40 @@
+package com.web.controller;
+
+import com.web.domain.User;
+import com.web.domain.enums.SocialType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+@Controller
+public class LoginController {
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    // Set redirecting URL after authentication succeeds
+    @GetMapping(value = "/{facebook|google|kakao|}/complete")
+    public String loginComplete(HttpSession session) {
+        // Get authenticated information from SecurityContextHolder for OAuth2Authentication type
+        OAuth2Authentication authentication = (OAuth2Authentication) SecurityContextHolder.getContext().getAuthentication();
+        // Get personal information by Map type with getDetails()
+        Map<String, String> map = (HashMap<String, String>) authentication.getUserAuthentication().getDetails();
+        // Generate user information with User builder
+        session.setAttribute("user", User.builder()
+                .name(map.get("name"))
+                .email(map.get("email"))
+                .principal(map.get("id"))
+                .socialType(SocialType.FACEBOOK)
+                .createdDate(LocalDateTime.now())
+                .build());
+
+        return "redirect:/board/list";
+    }
+}
