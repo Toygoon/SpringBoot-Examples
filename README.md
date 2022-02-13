@@ -14,3 +14,7 @@
 >* [\[FIX\] Ex5-18, SocialType variables are needed to be qualified](https://github.com/Toygoon/SpringBoot-Examples/commit/745373122a85094c79da1d0c2f5cc165fad9c9a4)
 >* [\[FIX\] Ex5-32, deprecated getUserInfoUri, import UserInfoTokenServices from older library](https://github.com/Toygoon/SpringBoot-Examples/commit/f41de3e326ca984d428c90c3198f12a91453d85b)
 >* [\[FIX\] Overall not working fix, downgrade everything](https://github.com/Toygoon/SpringBoot-Examples/commit/f34add4b48375748b3c63f99d6dfde1b9e414c59)
+
+>Things that the book didn't tell us
+>* [Ex6-0, Start with new project SpringBoot-Community-Rest](https://github.com/Toygoon/SpringBoot-Examples/commit/77d202c9f58d0b2275bf64c56745aea9ff73fdf7)\
+>Thanks to https://gwonsungjun.github.io/articles/2019-04/gradle_multi_module
