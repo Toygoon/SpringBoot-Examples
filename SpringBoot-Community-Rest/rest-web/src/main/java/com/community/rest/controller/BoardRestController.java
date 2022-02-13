@@ -29,12 +29,17 @@ public class BoardRestController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getBoards(@PageableDefault Pageable pageable) {
         Page<Board> boards = boardRepository.findAll(pageable);
+
         // Generate new PageMetadata object to create some resources such as current pages, total pages, and board numbers per page
-        PageMetadata pageMetadata = new PageMetadata(pageable.getPageSize(), boards.getNumber(), boards.getTotalElements());
+        /* PageMetadata is now inherited for subclass of PagedModel */
+        PagedModel.PageMetadata pageMetadata = new PagedModel.PageMetadata(pageable.getPageSize(), boards.getNumber(), boards.getTotalElements());
+
         // PagedResources applies HATEOAS, and it makes REST type data with generated paging values
-        PagedResources<Board> resources = new PagedResources<>(boards.getContent(), pageMetadata);
+        // PagedResources has changed to PagedModel
+        PagedModel<Board> resources = PagedModel.of(boards.getContent(), pageMetadata);
+
         // Can add new default links
-        resources.add(linkTo(methodOn(BoardRestController.class).getBoards(pageable).withSelfRel()));
+        resources.add(linkTo(methodOn(BoardRestController.class).getBoards(pageable)).withSelfRel());
 
         return ResponseEntity.ok(resources);
     }
