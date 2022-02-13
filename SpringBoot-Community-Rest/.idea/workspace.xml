@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="misc" />
+    <list default="true" id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="Ex6-9, Create SocialType Enum">
+      <change afterPath="$PROJECT_DIR$/rest-web/src/main/java/com/community/rest/domain/enums/SocialType.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -29,11 +32,15 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -63,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1644726315510</updated>
       <workItem from="1644726316767" duration="197000" />
-      <workItem from="1644726865264" duration="321000" />
+      <workItem from="1644726865264" duration="729000" />
     </task>
     <task id="LOCAL-00001" summary="Ex6-6, DataSource and ports">
       <created>1644727120522</created>
@@ -79,7 +86,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644727134319</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ex607, Create BoardType Enum">
+      <created>1644727239603</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644727239603</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Ex607, Create Board class">
+      <created>1644727389743</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644727389743</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +120,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ex6-6, DataSource and ports" />
     <MESSAGE value="misc" />
-    <option name="LAST_COMMIT_MESSAGE" value="misc" />
+    <MESSAGE value="Ex607, Create BoardType Enum" />
+    <MESSAGE value="Ex607, Create Board class" />
+    <MESSAGE value="Ex6-9, Create SocialType Enum" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ex6-9, Create SocialType Enum" />
   </component>
 </project>
