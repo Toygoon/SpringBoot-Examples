@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="Ex6-10, Create User class" />
+    <list default="true" id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="Ex6-12, Create UserRepository">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +64,9 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="" />
@@ -70,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1644726315510</updated>
       <workItem from="1644726316767" duration="197000" />
-      <workItem from="1644726865264" duration="1121000" />
+      <workItem from="1644726865264" duration="1679000" />
     </task>
     <task id="LOCAL-00001" summary="Ex6-6, DataSource and ports">
       <created>1644727120522</created>
@@ -121,7 +126,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644727789533</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ex6-11, Create BoardRepository">
+      <created>1644728146222</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1644728146222</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Ex6-12, Create UserRepository">
+      <created>1644728221333</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1644728221333</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +164,8 @@
     <MESSAGE value="Ex607, Create Board class" />
     <MESSAGE value="Ex6-9, Create SocialType Enum" />
     <MESSAGE value="Ex6-10, Create User class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ex6-10, Create User class" />
+    <MESSAGE value="Ex6-11, Create BoardRepository" />
+    <MESSAGE value="Ex6-12, Create UserRepository" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ex6-12, Create UserRepository" />
   </component>
 </project>
