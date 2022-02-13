@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="Ex6-12, Create UserRepository">
+    <list default="true" id="76d4900b-efae-49f1-8ff4-5384ba109081" name="Changes" comment="Ex6-13, Creater BoardRestController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-web/src/main/java/com/community/rest/controller/BoardRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-web/src/main/java/com/community/rest/controller/BoardRestController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1644726315510</updated>
       <workItem from="1644726316767" duration="197000" />
-      <workItem from="1644726865264" duration="1679000" />
+      <workItem from="1644726865264" duration="3335000" />
     </task>
     <task id="LOCAL-00001" summary="Ex6-6, DataSource and ports">
       <created>1644727120522</created>
@@ -140,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644728221333</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ex6-13, Creater BoardRestController">
+      <created>1644728898970</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1644728898970</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +174,7 @@
     <MESSAGE value="Ex6-10, Create User class" />
     <MESSAGE value="Ex6-11, Create BoardRepository" />
     <MESSAGE value="Ex6-12, Create UserRepository" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ex6-12, Create UserRepository" />
+    <MESSAGE value="Ex6-13, Creater BoardRestController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ex6-13, Creater BoardRestController" />
   </component>
 </project>
