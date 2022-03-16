@@ -14,9 +14,7 @@
 >* [\[FIX\] Ex5-18, SocialType variables are needed to be qualified](https://github.com/Toygoon/SpringBoot-Examples/commit/745373122a85094c79da1d0c2f5cc165fad9c9a4)
 >* [\[FIX\] Ex5-32, deprecated getUserInfoUri, import UserInfoTokenServices from older library](https://github.com/Toygoon/SpringBoot-Examples/commit/f41de3e326ca984d428c90c3198f12a91453d85b)
 >* [\[FIX\] Overall not working fix, downgrade everything](https://github.com/Toygoon/SpringBoot-Examples/commit/f34add4b48375748b3c63f99d6dfde1b9e414c59)
->* [\[FIX\] Ex6-13, Change deprecated some modules](https://github.com/Toygoon/SpringBoot-Examples/commit/52aa2c87b256149c4a8f7506eb1f52dc00ae8a09)
->* [\[FIX\] 'com.mysql.jdbc.Driver' is deprecated, change to newer driver](https://github.com/Toygoon/SpringBoot-Examples/commit/97c338b56c2886ceb8e1e01b6d43a730ed3ca7d2)
 
->Things that the book didn't tell us
->* [Ex6-0, Start with new project SpringBoot-Community-Rest](https://github.com/Toygoon/SpringBoot-Examples/commit/77d202c9f58d0b2275bf64c56745aea9ff73fdf7)\
->Thanks to https://gwonsungjun.github.io/articles/2019-04/gradle_multi_module
+>If you want to start Chapter 06, you may want to use this file.
+>* [Chapter06-base.zip](https://github.com/Toygoon/SpringBoot-Examples/raw/main/Chapter06-base.zip)\
+>Start with this file, pre-generated projects.
