@@ -4,6 +4,16 @@ spring:
     username: SCOTT
     password: tiger
     driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: create
+    h2:
+      console:
+        enabled: false
+      path: /console
+    devtools:
+      livereload:
+        enabled: true
 
 server:
   port: 8081
